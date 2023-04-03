@@ -64,7 +64,7 @@ def make_players_table(data, cur, conn):
         position_id = int(cur.fetchone()[0]) 
         birth_year = int(player_dic["dateOfBirth"][:4])
         nationality = player_dic["nationality"]
-        cur.execute('insert into Players (id, name, position_id, birthyear, nationality) values (?,?,?,?,?)', (id, name, position_id, birth_year, nationality))
+        cur.execute('insert or ignore into Players (id, name, position_id, birthyear, nationality) values (?,?,?,?,?)', (id, name, position_id, birth_year, nationality))
     conn.commit()
 
 ## [TASK 2]: 10 points
